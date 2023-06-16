@@ -37,6 +37,112 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 - Teste o programa, realizando diferentes operações no sistema de gerenciamento de estacionamento e verifique se os resultados estão corretos.
 - Documente o seu código e forneça instruções sobre como executar o programa.
 
+## Próxima aula
+- Instalar no projeto pacote MySql.Data
+- Criar três variáveis 
+  - public MySqlConnection con = new MySqlConnection("server=localhost;database=estacionamento;uid=root;pwd=;sslmode=none");
+  - public MySqlCommand cmd = new MySqlCommand();
+  - public MySqlDataReader rd;
+- Renomear labels, txts e botoes
+- Adicioanar evento aos botões
+  
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            VerificarEntrada();
+        }
+          private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            Registrar();
+        }
+
+- Criar metodo que será chamado no clique do botao ok.
+
+
+ private void VerificarEntrada()
+        {
+            try
+            {
+                var txtplaca = txtPlaca.Text;
+
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = $"SELECT Id, placa, modelo FROM veiculo WHERE placa = '{txtplaca}'";
+
+                rd = cmd.ExecuteReader();
+
+                if (rd.Read())
+                {
+                    veiculoid = Convert.ToInt32(rd["id"].ToString());
+                    var placa = rd["placa"].ToString();
+                    var modelo = rd["modelo"].ToString();
+
+                    txtModelo.Text = modelo;
+                }
+                else
+                {
+                    lblModelo.Text = "DIGITE O MODELO";
+                    lblModelo.ForeColor = Color.Red;
+                    txtModelo.Text = string.Empty;
+                    txtModelo.Focus();
+                }
+
+                rd.Close();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                MessageBox.Show("Ocorreu um erro no sistema // " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+
+            }
+
+        }
+- criar metodo chamado no botão registrar/salvar
+private void Registrar()
+        {
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = "INSERT INTO registro (veiculoId, horaentrada) " +
+                        "VALUES (@veiculoid, @horaentrada)";
+
+                cmd.Parameters.AddWithValue("veiculoid", veiculoid);
+                cmd.Parameters.AddWithValue("horaentrada", DateTime.Now);
+                
+                var retornoInsert = cmd.ExecuteNonQuery();
+
+                if (retornoInsert > 0)
+                {
+                    LimparCampos();
+                    MessageBox.Show("Registro realizado.");
+      
+                }
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                MessageBox.Show("Ocorreu um erro no sistema // " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+
+            }
+        }
 ## Telas feitas até aula 16/06/2023:
 Prototipo
 ![prototipo](https://github.com/suarezrafael/DotNet.Framework.4.Senac.T10.WF.Estacionamento/assets/29218714/6e1a8be7-95c6-4b79-9f68-abb548cf486d)
