@@ -28,10 +28,10 @@ Cada veículo deve ter as seguintes informações registradas:
 Modele o banco de dados para armazenar as informações necessárias para o sistema de gerenciamento de estacionamento.
 
 - Escreva as consultas SQL para realizar as seguintes operações: 
-   a) Registrar a entrada de um veículo no estacionamento. 
-   b) Registrar a saída de um veículo do estacionamento. 
-   c) Exibir a lista de veículos atualmente estacionados. 
-   d) Calcular e exibir o valor total arrecadado no dia.
+  - a. Registrar a entrada de um veículo no estacionamento. 
+  - b. Registrar a saída de um veículo do estacionamento. 
+  - c. Exibir a lista de veículos atualmente estacionados. 
+  - d. Calcular e exibir o valor total arrecadado no dia.
 
 - Implemente um programa em sua linguagem de programação preferida que utilize o banco de dados e as consultas SQL para interagir com o sistema de gerenciamento de estacionamento. 
 
