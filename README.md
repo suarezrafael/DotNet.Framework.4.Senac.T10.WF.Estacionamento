@@ -55,6 +55,17 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
             Registrar();
         }
 
+- Criar evento de de aodigitar no txtPlaca
+
+        private void txtPlaca_TextChanged(object sender, EventArgs e)
+        {
+            // Salva a posição do cursor
+            int cursorPosition = txtPlaca.SelectionStart;
+            txtPlaca.Text = txtPlaca.Text.ToUpper();
+            // Define a posição do cursor no final do texto
+            txtPlaca.SelectionStart = cursorPosition;
+            txtPlaca.SelectionLength = 0;
+        }
 - Criar metodo que será chamado no clique do botao ok.
 
 
