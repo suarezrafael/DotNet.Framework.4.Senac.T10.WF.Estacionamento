@@ -39,10 +39,11 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 
 ## Próxima aula
 - Instalar no projeto pacote MySql.Data
-- Criar três variáveis 
+- Criar 4 variáveis 
   - public MySqlConnection con = new MySqlConnection("server=localhost;database=estacionamento;uid=root;pwd=;sslmode=none");
   - public MySqlCommand cmd = new MySqlCommand();
   - public MySqlDataReader rd;
+  - public int veiculoid = 0;
 - Renomear labels, txts e botoes
 - Adicioanar evento aos botões
   
@@ -50,12 +51,15 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
         {
             VerificarVeiculo();
         }
-          private void btnRegistrar_Click(object sender, EventArgs e)
+        private void btnRegistrar_Click(object sender, EventArgs e)
         {
+           if(veiculoid == 0)
+                veiculoid = InserirVeiculo(txtPlaca.Text,txtModelo.Text);
+
             Registrar();
         }
 
-- Criar evento de de aodigitar no txtPlaca
+- Criar evento de de ao digitar no txtPlaca para converter o texto pra maiusculo e manter o cursor do teclado no final
 
         private void txtPlaca_TextChanged(object sender, EventArgs e)
         {
@@ -118,7 +122,7 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
             }
 
         }
-- criar metodo para verificar se ja existe um registro
+- criar metodo para verificar se ja existe um registro de entrada em aberto
 
          private bool VerificarEntrada(int id, string placa)
         {
@@ -157,6 +161,93 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 
             }
             return true;
+        }
+- criar método para inserir um novo veículo
+-
+         private int InserirVeiculo(string placa, string modelo)
+        {
+            int veiculoId;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = "INSERT INTO veiculo (placa, modelo) " +
+                        "VALUES (@placa, @modelo)";
+
+                cmd.Parameters.AddWithValue("placa", placa);
+                cmd.Parameters.AddWithValue("modelo", modelo);
+
+                var retornoInsert = cmd.ExecuteNonQuery();
+
+                con.Close();
+
+                if (retornoInsert > 0)
+                {
+                    veiculoId = BuscarVeiculoIdPelaPlaca(placa);
+                    return veiculoId;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                MessageBox.Show("Ocorreu um erro no sistema // " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+
+            }
+            return 0;
+        }
+- criar método para buscar o id do veículo pelo numero da placa
+-
+
+         private int BuscarVeiculoIdPelaPlaca(string placa)
+        {
+            var veiculoId = 0;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = $"SELECT id FROM veiculo WHERE placa = '{placa}'";
+
+                rd = cmd.ExecuteReader();
+
+                if (rd.Read())
+                {
+                     veiculoId = Convert.ToInt32(rd["id"].ToString());
+
+                }
+                else
+                {
+                    MessageBox.Show("BuscarVeiculoIdPelaPlaca: Veiculo nao localizado // " );
+                }
+
+                rd.Close();
+                con.Close();
+
+                
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                MessageBox.Show("Ocorreu um erro no sistema // " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+
+            }
+            return veiculoId;
         }
 - criar método chamado no botão registrar/salvar
 
