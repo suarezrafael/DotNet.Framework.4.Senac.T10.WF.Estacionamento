@@ -5,15 +5,18 @@ Sistema de Gerenciamento de EstacionamentoSistema de Gerenciamento de Estacionam
 ## Atividade: Sistema de Gerenciamento de Estacionamento
 
 ## Descrição: 
-Você foi contratado para desenvolver um sistema de gerenciamento de estacionamento para uma empresa. O sistema precisa ser capaz de registrar informações sobre os veículos que entram e saem do estacionamento, bem como calcular e cobrar as taxas de estacionamento.
+Você foi contratado para desenvolver um sistema de gerenciamento de estacionamento para uma empresa. 
+O sistema precisa ser capaz de registrar informações sobre os veículos que entram e saem do estacionamento, bem como calcular e cobrar as taxas de estacionamento.
 
 ## Requisitos:
-O sistema deve permitir o registro de novos veículos que entram no estacionamento. Cada veículo deve ter as seguintes informações registradas:
+O sistema deve permitir o registro de novos veículos que entram no estacionamento. 
+Cada veículo deve ter as seguintes informações registradas:
 
 - Placa do veículo (formato XXX-####, onde X é uma letra maiúscula e # é um dígito numérico de 0 a 9)
 - Modelo do veículo
 - Hora de entrada no estacionamento
-- O sistema deve permitir registrar a saída de um veículo do estacionamento. Ao registrar a saída, o sistema deve calcular a duração da estadia do veículo e a taxa a ser cobrada com base nas seguintes regras:
+- O sistema deve permitir registrar a saída de um veículo do estacionamento.
+- Ao registrar a saída, o sistema deve calcular a duração da estadia do veículo e a taxa a ser cobrada com base nas seguintes regras:
 - As primeiras 2 horas são gratuitas.
 - Após 2 horas, a taxa é de R$ 5,00 por hora ou fração de hora adicional.
 - O sistema deve ser capaz de exibir relatórios com as seguintes informações:
