@@ -36,3 +36,17 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 
 - Teste o programa, realizando diferentes operações no sistema de gerenciamento de estacionamento e verifique se os resultados estão corretos.
 - Documente o seu código e forneça instruções sobre como executar o programa.
+
+## Telas feitas até aula 16/06/2023:
+Prototipo
+![prototipo](https://github.com/suarezrafael/DotNet.Framework.4.Senac.T10.WF.Estacionamento/assets/29218714/6e1a8be7-95c6-4b79-9f68-abb548cf486d)
+
+FormPrincipal
+![formPrincipal](https://github.com/suarezrafael/DotNet.Framework.4.Senac.T10.WF.Estacionamento/assets/29218714/23b1b992-ba2d-45f5-878b-406a19b28194)
+
+FormEntrada
+![fromEntrada](https://github.com/suarezrafael/DotNet.Framework.4.Senac.T10.WF.Estacionamento/assets/29218714/e91811af-87b7-4f8d-a8ee-d702fb2c4fe6)
+
+FormSaida
+![fromSaida](https://github.com/suarezrafael/DotNet.Framework.4.Senac.T10.WF.Estacionamento/assets/29218714/6f51678b-3924-47b5-a347-14a9c1eba362)
+
