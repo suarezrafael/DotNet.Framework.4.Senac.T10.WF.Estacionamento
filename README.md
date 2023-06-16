@@ -48,7 +48,7 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
   
         private void btnOk_Click(object sender, EventArgs e)
         {
-            VerificarEntrada();
+            VerificarVeiculo();
         }
           private void btnRegistrar_Click(object sender, EventArgs e)
         {
@@ -68,8 +68,7 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
         }
 - Criar metodo que será chamado no clique do botao ok.
 
-
- private void VerificarEntrada()
+        private void VerificarVeiculo()
         {
             try
             {
@@ -86,13 +85,16 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
                 if (rd.Read())
                 {
                     veiculoid = Convert.ToInt32(rd["id"].ToString());
-                    var placa = rd["placa"].ToString();
                     var modelo = rd["modelo"].ToString();
+
+                    if (!VerificarEntrada(veiculoid, txtplaca))
+                        return;
 
                     txtModelo.Text = modelo;
                 }
                 else
                 {
+                    veiculoid = 0;
                     lblModelo.Text = "DIGITE O MODELO";
                     lblModelo.ForeColor = Color.Red;
                     txtModelo.Text = string.Empty;
@@ -116,8 +118,49 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
             }
 
         }
-- criar metodo chamado no botão registrar/salvar
-private void Registrar()
+- criar metodo para verificar se ja existe um registro
+
+         private bool VerificarEntrada(int id, string placa)
+        {
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = $"SELECT id,horaentrada FROM registro WHERE veiculoid = '{id}' AND horasaida IS NULL";
+
+                rd = cmd.ExecuteReader();
+
+                if (rd.Read())
+                {
+                    MessageBox.Show("VEICULO" + placa + " já registrado!");
+                    return false;
+                }
+
+
+                rd.Close();
+                con.Close();
+
+    
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                MessageBox.Show("Ocorreu um erro no sistema // " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+
+            }
+            return true;
+        }
+- criar método chamado no botão registrar/salvar
+
+        private void Registrar()
         {
             try
             {
