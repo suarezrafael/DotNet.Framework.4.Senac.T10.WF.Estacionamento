@@ -41,28 +41,57 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 - Documente o seu código e forneça instruções sobre como executar o programa.
 
 ## Próxima aula
+- O programa será constituido das seguintes telas:
+  - FrmPrincipal
+    - A tela principal irá chamar as outras telas através de botões.
+  - FrmEntrada
+    - A tela de entrada irá realizar o cadastros do veículo caso se a primeira vez que a placa é informada e registrar a entrada do veículo
+    - Ambos os registros será um insert na tabela veiculo e tabela registro
+  - FrmSaida
+    - A tela de saída irá realizar a gravação da hora de saída do veículo na tabela registro
+  - FrmRelatorios
+    - A tela terá dois botóes:
+      - Lista de Veículos Estacionados
+      - Total Faturado no dia
+  - FrmRelListaVeiculosEstacionados
+    - A tela exibirá um listBox com os veículos estácionados e o tempo decorrido de cada um.
+      
 - Instalar no projeto pacote MySql.Data
-- Criar 4 variáveis 
+  - Botão direto no mouse no projeto>Gerenciar Pacotes do Nuget..;
+- Na tela FrmEntrada navegue até o código fonte da classe FrmEntrada.cs e crie 4 variáveis 
   - public MySqlConnection con = new MySqlConnection("server=localhost;database=estacionamento;uid=root;pwd=;sslmode=none");
   - public MySqlCommand cmd = new MySqlCommand();
   - public MySqlDataReader rd;
   - public int veiculoid = 0;
-- Renomear labels, txts e botoes
-- Adicioanar evento aos botões
-  
+
+```
+    public partial class FormEntrada : Form
+    {
+        public MySqlConnection con = new MySqlConnection("server=localhost;database=estacionamento;uid=root;pwd=;sslmode=none");
+        public MySqlCommand cmd = new MySqlCommand();
+        public MySqlDataReader rd;
+        public int veiculoid = 0;
+```
+- Renomear labels, txts e botoes para
+  - lblPlaca, lblModelo, txtPlaca, txtModelo, btnOK, btnRegistrar
+- Adicionar evento aos botões com o seguinte código:
+        // evento de clique do botão ok
         private void btnOk_Click(object sender, EventArgs e)
         {
+            // chamada o método VerificarVeiculo (ele ainda nao existe)
             VerificarVeiculo();
         }
+        // evento de clique do botão registrar
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+           // se a variavel veiculoid for igual a zero
            if(veiculoid == 0)
-                veiculoid = InserirVeiculo(txtPlaca.Text,txtModelo.Text);
+                veiculoid = InserirVeiculo(txtPlaca.Text,txtModelo.Text); // veiculo id recebe o valor do retorno do métod InserirVeiculo
 
             Registrar();
         }
 
-- Criar evento de de ao digitar no txtPlaca para converter o texto pra maiusculo e manter o cursor do teclado no final
+- Criar evento de ao digitar(TextChanged) no txtPlaca para converter o texto pra maiusculo e manter o cursor do teclado no final
 
         private void txtPlaca_TextChanged(object sender, EventArgs e)
         {
@@ -74,7 +103,7 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
             txtPlaca.SelectionLength = 0;
         }
 - Criar metodo que será chamado no clique do botao ok.
-
+  - Crie abaixo dos eventos de clique
         private void VerificarVeiculo()
         {
             try
