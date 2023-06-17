@@ -111,7 +111,7 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
   - Crie abaixo dos eventos de clique
 
 ```
-        private void VerificarVeiculo()
+              private void VerificarVeiculo()
         {
             try
             {
@@ -129,6 +129,9 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
                 {
                     veiculoid = Convert.ToInt32(rd["id"].ToString());
                     var modelo = rd["modelo"].ToString();
+
+                    rd.Close();
+                    con.Close();
 
                     if (!VerificarEntrada(veiculoid, txtplaca))
                         return;
@@ -164,7 +167,7 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 ```
 - criar metodo para verificar se ja existe um registro de entrada em aberto
 ```
-         private bool VerificarEntrada(int id, string placa)
+          private bool VerificarEntrada(int id, string placa)
         {
             try
             {
@@ -178,16 +181,12 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 
                 if (rd.Read())
                 {
-                    MessageBox.Show("VEICULO" + placa + " já registrado!");
+                    MessageBox.Show("VEICULO " + placa + " já registrado!");
+                    LimparCampos();
                     return false;
                 }
 
-
                 rd.Close();
-                con.Close();
-
-    
-
             }
             catch (Exception ex)
             {
@@ -195,11 +194,8 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 
                 MessageBox.Show("Ocorreu um erro no sistema // " + ex.Message);
             }
-            finally
-            {
-                con.Close();
-
-            }
+            finally { con.Close(); }
+            
             return true;
         }
 ```
