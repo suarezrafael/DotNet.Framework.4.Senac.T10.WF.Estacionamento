@@ -75,6 +75,8 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 - Renomear labels, txts e botoes para
   - lblPlaca, lblModelo, txtPlaca, txtModelo, btnOK, btnRegistrar
 - Adicionar evento aos botões com o seguinte código:
+
+  ```
         // evento de clique do botão ok
         private void btnOk_Click(object sender, EventArgs e)
         {
@@ -90,9 +92,11 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 
             Registrar();
         }
+```
 
 - Criar evento de ao digitar(TextChanged) no txtPlaca para converter o texto pra maiusculo e manter o cursor do teclado no final
 
+```
         private void txtPlaca_TextChanged(object sender, EventArgs e)
         {
             // Salva a posição do cursor
@@ -102,8 +106,11 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
             txtPlaca.SelectionStart = cursorPosition;
             txtPlaca.SelectionLength = 0;
         }
+```
 - Criar metodo que será chamado no clique do botao ok.
   - Crie abaixo dos eventos de clique
+
+```
         private void VerificarVeiculo()
         {
             try
@@ -154,8 +161,9 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
             }
 
         }
+```
 - criar metodo para verificar se ja existe um registro de entrada em aberto
-
+```
          private bool VerificarEntrada(int id, string placa)
         {
             try
@@ -194,8 +202,10 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
             }
             return true;
         }
+```
+        
 - criar método para inserir um novo veículo
--
+```
          private int InserirVeiculo(string placa, string modelo)
         {
             int veiculoId;
@@ -236,10 +246,12 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
             }
             return 0;
         }
-- criar método para buscar o id do veículo pelo numero da placa
--
+```
 
-         private int BuscarVeiculoIdPelaPlaca(string placa)
+- criar método para buscar o id do veículo pelo numero da placa
+
+
+ ```  private int BuscarVeiculoIdPelaPlaca(string placa)
         {
             var veiculoId = 0;
             try
@@ -281,9 +293,11 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
             }
             return veiculoId;
         }
+```
 - criar método chamado no botão registrar/salvar
 
-        private void Registrar()
+ ```
+ private void Registrar()
         {
             try
             {
@@ -320,6 +334,7 @@ Modele o banco de dados para armazenar as informações necessárias para o sist
 
             }
         }
+```
 ## Telas feitas até aula 16/06/2023:
 Prototipo
 ![prototipo](https://github.com/suarezrafael/DotNet.Framework.4.Senac.T10.WF.Estacionamento/assets/29218714/6e1a8be7-95c6-4b79-9f68-abb548cf486d)
