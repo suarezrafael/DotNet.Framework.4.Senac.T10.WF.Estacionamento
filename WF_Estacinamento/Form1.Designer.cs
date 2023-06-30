@@ -30,12 +30,13 @@
         {
             this.btnEntrada = new System.Windows.Forms.Button();
             this.btnSaida = new System.Windows.Forms.Button();
+            this.btnRelatorios = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEntrada
             // 
             this.btnEntrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEntrada.Location = new System.Drawing.Point(104, 235);
+            this.btnEntrada.Location = new System.Drawing.Point(96, 113);
             this.btnEntrada.Name = "btnEntrada";
             this.btnEntrada.Size = new System.Drawing.Size(346, 183);
             this.btnEntrada.TabIndex = 0;
@@ -46,7 +47,7 @@
             // btnSaida
             // 
             this.btnSaida.Font = new System.Drawing.Font("Microsoft Sans Serif", 38F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaida.Location = new System.Drawing.Point(536, 234);
+            this.btnSaida.Location = new System.Drawing.Point(524, 112);
             this.btnSaida.Name = "btnSaida";
             this.btnSaida.Size = new System.Drawing.Size(355, 183);
             this.btnSaida.TabIndex = 1;
@@ -54,11 +55,23 @@
             this.btnSaida.UseVisualStyleBackColor = true;
             this.btnSaida.Click += new System.EventHandler(this.btnSaida_Click);
             // 
+            // btnRelatorios
+            // 
+            this.btnRelatorios.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRelatorios.Location = new System.Drawing.Point(250, 344);
+            this.btnRelatorios.Name = "btnRelatorios";
+            this.btnRelatorios.Size = new System.Drawing.Size(488, 183);
+            this.btnRelatorios.TabIndex = 2;
+            this.btnRelatorios.Text = "RELATÓRIOS";
+            this.btnRelatorios.UseVisualStyleBackColor = true;
+            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1046, 679);
+            this.Controls.Add(this.btnRelatorios);
             this.Controls.Add(this.btnSaida);
             this.Controls.Add(this.btnEntrada);
             this.Name = "FormPrincipal";
@@ -72,6 +85,7 @@
 
         private System.Windows.Forms.Button btnEntrada;
         private System.Windows.Forms.Button btnSaida;
+        private System.Windows.Forms.Button btnRelatorios;
     }
 }
 

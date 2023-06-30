@@ -41,5 +41,13 @@ namespace WF_Estacinamento
             new FormSaida().ShowDialog();
 
         }
+
+        private void btnRelatorios_Click(object sender, EventArgs e)
+        {
+            // exibe a tela de relatórios
+            // part1: cria o FormRelatorio
+            // part2: exibe o FormRelatorio
+            new FormRelatorios().ShowDialog();
+        }
     }
 }
