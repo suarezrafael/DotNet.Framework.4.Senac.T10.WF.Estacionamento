@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +20,7 @@ namespace WF_Estacinamento
 
         public FormEntrada()
         {
+            // Renderizando os componentes na tela
             InitializeComponent();
         }
 

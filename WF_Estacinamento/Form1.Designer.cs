@@ -1,4 +1,4 @@
-﻿namespace WF_Estacinamento
+namespace WF_Estacinamento
 {
     partial class FormPrincipal
     {
