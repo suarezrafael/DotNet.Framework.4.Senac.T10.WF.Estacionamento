@@ -28,43 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.txtPlaca = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblValorPagar = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button2
+            // btnSalvar
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(548, 276);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(240, 80);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "SALVAR";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.Location = new System.Drawing.Point(548, 276);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(240, 80);
+            this.btnSalvar.TabIndex = 11;
+            this.btnSalvar.Text = "SALVAR";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // button1
+            // btnOk
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(548, 87);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(240, 87);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.Location = new System.Drawing.Point(548, 87);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(240, 87);
+            this.btnOk.TabIndex = 10;
+            this.btnOk.Text = "OK";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // textBox1
+            // txtPlaca
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(22, 87);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(498, 88);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "DIGITE AQUI";
+            this.txtPlaca.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlaca.Location = new System.Drawing.Point(22, 87);
+            this.txtPlaca.Multiline = true;
+            this.txtPlaca.Name = "txtPlaca";
+            this.txtPlaca.Size = new System.Drawing.Size(498, 88);
+            this.txtPlaca.TabIndex = 8;
+            this.txtPlaca.Text = "DIGITE AQUI";
+            this.txtPlaca.TextChanged += new System.EventHandler(this.txtPlaca_TextChanged);
             // 
             // label2
             // 
@@ -86,27 +89,27 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "PLACA:";
             // 
-            // label3
+            // lblValorPagar
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(27, 287);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(200, 58);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "R$ 0,00";
+            this.lblValorPagar.AutoSize = true;
+            this.lblValorPagar.BackColor = System.Drawing.Color.White;
+            this.lblValorPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorPagar.ForeColor = System.Drawing.Color.Red;
+            this.lblValorPagar.Location = new System.Drawing.Point(27, 287);
+            this.lblValorPagar.Name = "lblValorPagar";
+            this.lblValorPagar.Size = new System.Drawing.Size(200, 58);
+            this.lblValorPagar.TabIndex = 12;
+            this.lblValorPagar.Text = "R$ 0,00";
             // 
             // FormSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lblValorPagar);
+            this.Controls.Add(this.btnSalvar);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.txtPlaca);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FormSaida";
@@ -119,11 +122,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblValorPagar;
     }
 }
